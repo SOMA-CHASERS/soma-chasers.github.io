@@ -1,0 +1,52 @@
+<html>
+    <head>
+      <style>
+        body{
+          margin: 0;
+        }
+      </style>
+        <meta charset="utf-8" />
+        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      
+        <script src="//unpkg.com/d3-array"></script>
+        <script src="//unpkg.com/d3-scale"></script>
+        <script src="//unpkg.com/globe.gl"></script>
+        <!--<script src="../../dist/globe.gl.js"></script>-->
+      </head>
+      
+      <body>
+      <div id="globeViz"></div>
+      
+      <script>
+        const colorScale = d3.scaleOrdinal(['crimson', 'mediumblue', 'darkgreen', 'yellow','purple']);
+      
+        const labelsTopOrientation = new Set(['Apollo 12', 'Luna 2', 'Luna 20', 'Luna 21', 'Luna 24', 'LCROSS Probe']); // avoid label collisions
+      
+        const elem = document.getElementById('globeViz');
+        const moon = Globe()
+          .globeImageUrl('lunar_surface.jpg')
+          .bumpImageUrl('gradient.jpg')
+          .backgroundImageUrl('stars.jpg')
+          .showGraticules(false)
+          .showAtmosphere(false) // moon has no atmosphere
+          .labelText('label')
+          .labelSize(0.7)
+          .labelDotRadius(0.6)
+          .labelDotOrientation(d => labelsTopOrientation.has(d.label) ? 'top' : 'bottom')
+          .labelColor(d => colorScale(d.label))
+          .labelLabel(d => `
+              <div><b>${d.label}</b></div>
+              <div>coordinate(${d.lat},${d.lng})</div>
+              <div>Moonquake on <i>${d.time}-${d.date}</i></div>
+            `)
+          .onLabelClick(d => window.open(d.url, '_blank'))
+          (elem);
+      
+        fetch('points.json').then(r => r.json()).then(landingSites => {
+          moon.labelsData(landingSites);
+        });
+      </script>
+      </body>
+
+</html>
