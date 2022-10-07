@@ -6,17 +6,41 @@
         }
       </style>
         <meta charset="utf-8" />
-        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+        <link rel="icon" href="moon_PNG19.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       
         <script src="//unpkg.com/d3-array"></script>
         <script src="//unpkg.com/d3-scale"></script>
         <script src="//unpkg.com/globe.gl"></script>
         <!--<script src="../../dist/globe.gl.js"></script>-->
+        <style>
+          #img{
+            position: absolute;
+            z-index: 1;
+            margin: 20px;
+          
+          }
+          #link{
+            position: absolute;
+            z-index: 1;
+            color:white;
+            margin-left: 94%;
+            color:white;
+            font-family:monospace;
+            font-size: 20px;
+            text-decoration: none;
+          }
+        </style>
       </head>
       
       <body>
-      <div id="globeViz"></div>
+        
+        <a href="https://www.spaceappschallenge.org/" target="_blank">
+          <img src="logo.png" height="60px" id="img">
+        </a>
+       <a href="About.html" target="_blank"> <h4 id="link">About</h4></a>
+      <div id="globeViz"> 
+      </div>
       
       <script>
         const colorScale = d3.scaleOrdinal(['crimson', 'mediumblue', 'darkgreen', 'yellow','purple']);
@@ -27,7 +51,7 @@
         const moon = Globe()
           .globeImageUrl('lunar_surface.jpg')
           .bumpImageUrl('gradient.jpg')
-          .backgroundImageUrl('stars.jpg')
+          .backgroundImageUrl('space.jpg')
           .showGraticules(false)
           .showAtmosphere(false) // moon has no atmosphere
           .labelText('label')
@@ -40,7 +64,7 @@
               <div>coordinate(${d.lat},${d.lng})</div>
               <div>Moonquake on <i>${d.time}-${d.date}</i></div>
             `)
-          .onLabelClick(d => window.open(d.url, '_blank'))
+          .onLabelClick(d => window.open('https://docs.google.com/spreadsheets/d/1JExBR2r0hRUyrR3CNIyKmyrpwLyon74-sUhS970ImnU/edit#gid=0', '_blank'))
           (elem);
       
         fetch('points.json').then(r => r.json()).then(landingSites => {
