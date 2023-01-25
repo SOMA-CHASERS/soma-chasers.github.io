@@ -1,3 +1,8 @@
+
+![GitHub language count](https://img.shields.io/github/languages/count/SOMA-CHASERS/soma-chasers.github.io)
+![GitHub top language](https://img.shields.io/github/languages/top/SOMA-CHASERS/soma-chasers.github.io?color=yellow)
+![Bitbucket open issues](https://img.shields.io/bitbucket/issues/SOMA-CHASERS/soma-chasers.github.io)
+
 # Soma Chasers
 <p>This is the Project we have submmited at <a href="https://www.spaceappschallenge.org/"> NASA Space App Challenge 2022 </a>.</p>
  <p><b>Technologies used: </b><br>
