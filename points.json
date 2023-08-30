@@ -1459,5 +1459,23 @@
       "Depth": 933,
       "label": "Deep moonquake",
       "FIELD7": ""
-    }
+    },
+    {
+    "label": "Jawahar",
+    "lat": -89.76,
+    "lng": 39.4,
+    "Year": 2008
+  },
+  {
+    "label": "Trianga",
+    "lat": -70.881,
+    "lng": 22.784,
+    "Year": 2023
+  },
+  {
+    "label": "Shiv Shakti",
+    "lat": -69.373,
+    "lng": 32.319,
+    "Year": 2023
+  }
    ]
